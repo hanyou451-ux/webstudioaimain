@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X Studio Creative Creator — HNN AI Generator</title>
+<meta name="description" content="X Studio Creative Creator — media workspace untuk download area dan music area.">
+<style>
+:root {
+  --bg:#050505;
+  --panel:rgba(255,255,255,.075);
+  --panel2:rgba(255,255,255,.11);
+  --line:rgba(255,255,255,.15);
+  --text:#f6f6f6;
+  --muted:#a8a8a8;
+  --accent:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#050505;color:var(--text)}
+body{
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(255,255,255,.08),transparent 28%),
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.7)),
+    url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIApQBLwMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAACAwABBAUGB//EADcQAAMAAgIBAwIDBAkEAwAAAAABAgMRBBIhBTFRQWETFFIiMmJxM0JygZGhsdHwFYLB4QYjQ//EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwD4dsmyFAXstMEZC2gCQaRUoYpAkoNSXMjZgAJgYoDmBswAuYDWMfMBzjASsYSxmhYwlACFjCWM0KC+gCFjL/DH9C+gGf8ADJ+GaehOgGX8Mn4Zp6FdAMrxgvGa+gLgDG8YDxmxwC4+wGKoF1jNtQLqAMTxi6k2VAqpAyuQWjRUCqkBLF0PpeBTQCWyBVIAEIQgEIFotJACkOxrwiKF8DIkApkbMkiR0QAMwPiAscD4gAJgZMDIgaoACYDUDZgOYAUoDUDVASgBSgLoNUhdQE9CdB3UvqAnoToO0TQCOhXQ0dSdQM7gFwaXILkDK4BcGpwC4Ax1AuoNlQLqfAGOoE1BucCagDFUCak3XjEXAGK5FVJsuBFSBmpCmjTUoW4QCCBUtMEAtDIRSkbKAuUNiSpRoxwBeOB8QTHBpiPAFRA+YJED5kAZkbMBTAyUAKgNSEkEkAKkJIsJIAdF6LLAHReiyAUTRZAK0VoIgAtFNBFgKaKcjdA6AS5AqB7QLkDLUC6g1uRVSBjuBNwbakTcgYLgzXJ0ckGbJAGGp8i6RquRFIDNa8i2h9IXSAYkNlAyh0SAeOTVjkDHJqxyAWODREFY4HxIEiR0ySUMSAiQSRaRYELKJsAi9gbJsAtk2C2VsA9k2BsmwD2TYGybAPZNgbJsA9kbB2QA9lA7JsCyiEAFoByNBaARUibk1UhdSBiuDPkg3XJnySBgyQZskm/JJmySBipCaRqyLyJpAMhGjHIrGjVikB2OfY145E4pNUSAcIfCBlDZQFpBoFBAEQHZWwC2TYGyuwB7K2BsrYDGytgdibAPZNi+xOwDNk2L7E7AM2TYrsX2AYmXsV2L7AM2WmK2XsBuybFplpgMKYOy9gRi6QeymAipEXJrpCLQGPJJkySdC0Zck+4HPyyIpGzLJlr3AdiRsxSZsSNuJAPxyaIQvGh8AHKGIBBJgEQHZWwC2VsHZTYBNlbAbK2AfYrsBsrYBtk2LbK7AM2TYvZWwG7JsVsmwG7JsVsmwGpl7FbLVAM2EmK2XsBqZexSZaYDdl7Fpl7AZsgCZewIxdoNsGgM9oz5JNdoz5EBgyyZMk+TflRjyoB2JGzEjNiRsxIB8DZFwhgB7JsHZTYBNlb8AtlNgFsp0A2U2AbYLYDYLrwAzZWxborYDHRXYX2KdAM7ldhXYncBvYnYV3J3Ab2L7Ce5FYD1RaoSqJsB+y+whMJMByZaoUqLVAOTLVCUwkwHJlqhSotMBmyNgbLAGhNocxVAZMqMeVeTflRiyoBuI2YzLiNUAOkLYCL2AXYp0DsFsAtlOgHQLYDHQHYB0C6AN0C6AdAugGdgXQt0C6AY6J2+4l0V2Ad2+5OwnsR0A3sTsJ7E7AO7F9hHYvsA7sEqM/YJUA/sEqM6sJUBoVBJmdUEqAeqCTEKg1QDky0xSoJUA3ZexWwkwDbAovZT9gM+UyZV5NmQy5ACxGqPYy4jRIDSbATKpgE2C2C2B2AJ0C6BqgHQBugHQt0C6AY6Adi6oHsA3sC6FOgXQDexToV2KdAO7ldxPYmwHdidhPYnYB3YnYT2J2Af3IrEqidgNCoJWZ+wSoDQrDVmbuEqA0qg1RmVhqgNCoNUZ1QaYD0w0zOmGmA7ZGLTC2AGT2M2Q00ZsgF4x8+xmxsfL8AHsFspsB0BbYDoGqFugCqgHQFWLqwDdAOxbsB0Ax0U6FOgewDdlbFOinQDOxOwrsV2Ad2K7C+xXYBvYnYV2L7AN7E7CuxOwDexfYT2J2AfsvYjuX3AeqCViFRaoDSqDVmVUGqA1TQyaMs0MVAapoNMzTQ1UA9MLYmWHsAqfgz5RtPwZ8rALEOXsIx+w0CNi6YVMVTAqmJqgqYm6AlUKdEdC6YBOgGwWwWwCbK7ANkAtsohWwIyFEAmyFEAshRALLBIAWybBIARewSANTLTFplpgNTDVCEwkwNCoZNGaaGTQGqaHJmSWOhgaZYaYmWNQFtiMjHMTlAmJjvoZsFGlewA0JpjqE2Am2Ip+RuQRYAUxbou2LbAtsHZTIBeytkKAsohAIQhAIQhAIQhAIQhAIQhAIQhAL2TZRAC2XsAgDpYyWITGSwNMsfDMsGiANEjpEwOkC37GbK/Jor2MmavIAcejdD3Jy+PZ0cNbQB0hGQ0NCciAyZNiLNOQzWAigA6FgQohAIQhAIQhAIQtFgCWWTQFaKCZNACQLRWgKIWUBCEIBCEIBCEIASGSxS9xkgPx+5pgzYzVjA0Y0OQqEN+gA5H4OfyK8mzPWkczNe2AvHWmjpca/By9aNXHyaYHV90BaJirchUvAGPKjJaN+VGLKvIGaxYyxbAohCAQhC9ATRaRA0BXUtSFoJIBfQLqGkF1AV1K6DupOoCPw/uToO0VoBLgrqOaAaAW0VoY0CABC2UBCEIBaGQha9x0IB2NGzHJnxI2YkA2EFXhEkVmvSYGblX7pHPvbHZ8m29CUAbQKbl7NFxoRSA3cbLvRuT7LwcTFfS15OrxcypAXlkxZp0zpUtmXPHuBzMnuJZpyz5M9LyAJCEAtBAoOQIkMlFJDJQEUhdS0gkgBSL0GkWkAGitDepOoCtFaG6KaAS0C0OaAaAU0BSGtAUAllBUtMpgUQhALn3NGNeREe5rwztoDRhk2Y5FYY8I0a0gJbUyc3lZh/JzdU0cyqdsCe72MUlRI+YA03j8GbJB06hGfJj+wHMpaYfHzuK8jcuL7GW5ae0B3MGRWvcvJG0cjicl46Sb8HZw5Fkn6PYHOz4/cw5J0dzNh9/Bzs+LW/AHPaKGZJ0LAJDIQufcbABpDJRUobKAiQSktSMUgCpL6hpF9QFqSORqkjkBWgWhvUjkBHUGkOaApAIaF0h9IVaARS8gMZaFsASFhY5bYDMU7Ohx8fsK4+HevB0sWLWgJE6XkTysymfcZyc844fk43IzvK/cCs2V3ZInZURvya8WL7AVixmmYDx4/sPUANci7j7DytbAxZMfj2MeXD5OtUbE5MQHDyQ19BvF5VYWk/Y25eP9jFmwPYHcwZozwtPyxfIwbXscXDnvj0uvt8Hc4fLx8mdb/a+GByeTga+hiqdM9LyOL3T8HI5fEcttIDDPuOgUlp6aHYwGwh0ICEPhAFKDUlxIyZQAqQuoagLoArqTqOUF9EBncguTS4BcAZXIFI0uBVyBmpCaNNyItAZrFP3HWvIrW60gKlbN3F47YfE4jfydfDx5hAKwYNSgeXyYww1vyBzufOBOY80ca8mTPe6+oF5s9Zq93omPG39BmLA2zdi4/2AThw/Jsx49fQZjxaQ1SAMT4D19gtEAWrDT2YpyDZyAaSdRU2MVbAp49iMnG7GxaZfVAcTPw350YnjyYL7Q2mvqenrDNfQz5eHNeyAycH1VeMfIWv4jpvFHJhVLTTOPyPTX9EIw5OVwq/YdOV9H7Aaed6bap3iW2vdfJhj301p/B3OH6vgz6nOulP6/QfyfTMHLX4mNpX+qQOJjNONEy8HPxn+3HaV/WnyHiXgBkSOmSRI+ZABQEoGqQlACupTgepI5AzuQXJpcguAMlSJuTZUibkDDkRlye5uySVh9Nz8h/u9J+a/8Acqpq76St0/ojp8H0uklWRJ1/odTDwuNwZdX1T+tV7mLl+s45Tjix2f6mBrr8HjR2tpHH5vqlZt48G0v1Cank8y+2Wqf+hr4/pzXugObjwVkrdb2/qb8HEf1Oji4syOWNIDJj4+hyx6HaSKrQAa0Qqq0LrIAxsDuJrKLeUDGsn3GTlMeydgOhOYdGY5isOcv3A60ZkPnImceM/3HxyPuB1ppMYtM5uPkI0RyEBr6TX0FZOHFrykXGdDoyJgcrP6Oq8yjPHH5vCreC6S+PdHo1Sf3C6TXukBx8PrWSf2Obgb/ig1Y69M5j3GSYt/fqzXfDw5PeEzNk9GwX7LQBv07JP9HStffwT8HJH78Nf3bEz6VyMPnj8m4+yoZL9Xxf18eb+3C/8AGgDSQalfIH53mr+m9PmvvNF/n1/X9Pyr+TQBpE0Cudh+vD5H/P7ynzsP04XIf/P5gW0vkBr4/wAgvz2/3PT7/vaK/Oc6v6LhRP3b2AP5fJX7sP8A0C/INLtltSv5i7Xq+X3yxiX8Epf7sU/ScuZ75Ge7f3rYBXyPTeJ/XV3/AA/tMyZ/Vs+Xc8XB0X6n5Zvx+kYI+m2aZ4uKPadAed/Jcvk12z3T/mzVg9KmPNJNna6zPsgKqUBlx8SY+gf4aX0LrIhN50gDekLq0IvkL5M+TkfcDVeRIReYy3n39RF5fuBqrN9xVZfuZXk39QHYGisoDyiOxWwA2TYOytgMTCTE7CTAamMVCUw5AfNtezHRlZlQyQNkZ2OjktGGRksDoxyzRHL+5yZ2MW/kDszy0MnkycWXXyMVVr3A7c8iX9f8w1mn5OGrv5DWS/kDt/jSX+JLOL+LfyWs1/IHZ7wTvBx/x7+Sfj38gdjvBTzSch57+QXlv5A6340r6gVyIX1X+Jynkv5Ad38gdSuTImuYvk5zqvkB7+QN18v7me+VsyvYFAOvkiLztgMXQBVlYqrbKoBgVVANkpgNgXsrYLZXYA9lbA2TsAOyFFgQKStBSgGIOQEMlAGhiAlDEgDlDJAkZIBpByDIcgGg0vACDXsASCSKS+wSl/AESC0iKa+AulfpAHSJpB9K/STpX6QA0img+lfpBcv/AIgAaAYxp/ADQAMBoZQDAVSApDaF0gFNC6GsXSATSAY1oWwFv2FNDq9hTAWwQ2CAJCygIEiJBJAUkHJNBygIhiIkMmdgSUNSLjH9h8YfsAuUMmdj4w690PjEl5Azxjb9h0YWx6Ur4JWbHHu0gKnjjY48mWufO9Rtv7Dcf53P5x4ml8vwBrnDjn30F/8AVPu5FY/TeRfnNnSXxIz8lxMX9Nmb/nQF/i4J+qB/N8dfUvt6bj9sTv8A7d/6lfm+LP7nEX+CQE/O8f6PZFzeP8k/6jH0406/tf8Aon/UY9nxZa/tf+gJ+a47/rIJZcFf1pB/OcWv3+H/AIKX/sXv07J/+f4f851/oBbWKvZr+4CsMPyg/wAhxMq3h5DT+1bFX6dysfnDmmvtXgAL48iK45eSubx9/i4a0vqvIE+oRXivDAXWGkKrG17o3Tlx2vFIjhP6gcyoFUjpXhTEXh+wGCkKpG28X2EXjAzUKZoqRbkBDBY5oFyAooKkCAxSGkXKDUgCpGTAcRsfjxgLjHs0RiGRCGLSAkY0NUpCqzTK90Zc/NU+zA6DyTHuzPm9QiNpPbOZN8jl30wy6b+Dt+n/APx+fGTmPtX6foBhxZOXza68fHTXz7I6fF9Cp6rmZW/4ZOsnh40aiZiUjmcv1WqbnjvX8X+wG+cfC4MeJiPvrbYu/UO39DGl80ceLq67W3T+WasfsBprLkyfvXT+wtyFAaAQ4K6mnqV0Az9fsTr9jR0J0AQoLUDugXUBChe4yM2XH+7kevh+UW0hdgao9R14zR4+Z/2Cy8Xg86O3WL/inw0czIZnkvFXbHTl/KAfyvQ82LdcTL2X6aOdXK5HFvryIqf5o7fE9W7fscnSr9X0Zvy4sHMhzkiaX3A89j58W/LNHea9hPqHoDx7vhva/QzlRnzceumRUn8UB2KlMTeJCMPNVeGaVkVLw0BlvEZ6xnRa2KuEBzqgBybLxiagDK5ApGipF0gHTA6cZcyMS0BcxoYloDtoC8uvqA95OojLyuvhGbLnb9jOld0kltsBmXk1ft4Nfp3pWbmUqtOI/wA2bfSvSOzWTOt/wnoomMUalAJ4fDwcPH1iEmi+Ry1jlt6WhfJ5HVP4OLzOS7f2AnM5t57c71PwIliO3kOWBrxs1Y68GDHRqx34A2zQyWZYodFgaEWhU0MVAEQpMjYEKZToCqAlMTdF1Qm6AHIzJkY3JRmugBqjZwOfeGulPc/R/Bz6YKryB6/DyVa+RHP9Ow82P2p8/KOTw+TUeN/snZwZ+yA8lz/T83Cveu0fRoVh5NTpb2e2z4ozw1STTR5n1P0l4W7wLx8ABi5PbWxvfZx1VRXw/hmnFnYG5rYq5KnImvLD2BmuBTg10gHIBeER2LqhV2Ay8ujPeRv2Aq22THNXSlIAscVkrqltnf8AS/Tpx6uluhfpvCUJVXuzt49TIDJ1Er7CM+bSKy5NGDk5ffyArl52/Gzm5a8jc1mS68gX28hTQh0XLA2RRoijDFD4vwBuix02YJsdNgbpoNWY5yBLIBs7kdmVZCfieANDsXViXf3AeQBlWJuwKyCbsC7sRVEuxFUAVUAq8gOvJW/IGvDejqcPO/k4mOtGzBemgPR4cu17jMkTcaZzOPl8e5ujIBxPVPTF5uF59ziUqitP6HtsqVr2OF6lwvepXkDlRlNEZN/UxXLmmmFN6A3b2TZni/A1UAi7EVXkqqK92AUT2ejsen8XS20ZeFx9tHcwQoSA0YkplBVekL7CrvQEzZDByLG5b9zFmoBOSzPbCtiaYE2FLFbLTA0TQ2aMqYaoDXNjZsxKxk5ANqyBKzGsgayAa1kJ+J4MqyE/EA0PIA7E9wayAMqxVWBVinQB1QtsF0C34AjfkrYLfkpMB8PyacVmKWaMbA6mDJ4RuxZDk4aNuO/YDpTQrkSrQuLGNgcP1DjJU2jl0urPT8jH2TOHzMHVtgZZocrM1e5aoAfcfx47UvAnHOzqcLFpewG3i4kpRtQrHOkMb0BKoRkoO2ZslALy0YstD8tGTIwF2xNPyMtiqArZNlFAMVBdhISYDVQasQmEmA9WEshnTL2BoVl92Z+xOwD/AMQB2L7A7AY7AdANlbAN0C2C2UBZX1KIA2WOhmeWNgDZirRsx2c/GzVjoDoY6HzRjxs0SwDryjn8vEmjoCM07QHnc0dafgT5OlzMfvpHPpaAfxo21s7HGjSRg4mP2OphWkBoleCqZaBsBeRmbIx+QzZAM2VmWzTlMtgLoWw6AYAkIQCEIQC0TZRAC2WmAWAWybB2TYBbJsEgFtlbKIBCEIBCEIAUjJFIOANOM1YzJj+hqxga8bNMGTGaYYDkyrXgklsDn8qNpnKzTqtHczTtHL5UeQNXGlI3414M2CdGuF4AIGgwKATZnyI0WItAZchls15EZ7QGegGNpC6QCyF6JoCiEIBCEIBCEIBCEIBCEIBCEIBCEIBCELSAtIOEUkMlANhGnGhEI0YwNGM0QIxmiEA2S2VIWgE5F4OdyoXudPIjHyJ34AdhRpleBGJGiV4AsCw9A0gEWJs0UhNoDNkRmtGy5EXIGWkKpGmpFVIGdlMZUg9QFkCclaAoheiaAoheiaAoheiaAoheiaAoheiaAoheiaAiQaRUyMmQIkMhEmRsQAUI0QgIkdEgMhD4Fwh0oBkhFJeAgF2Zcy8mu0Zsq8gMxI0T7CcfsPkCA0M0C0AhoVSNFIXUgZ6Qm5NNSLqQMlSKqTXUiqkDJUgOTTUi3ICHIOhzkFyArRNDNE6gK0QZ1J1AWTQzqTqAsmmM6l6AVovqM6kUgB1CSDUhKQAmRkyWpGzIAzA6ZLmRsSBUyOlFTI2ZAuUOlApDJQFpMIiRegAszZfc1UjPkAZjHyhWJD5QE0U0NUkcgZ2gKk0OAHIGWpF1JqqRbkDLUiqk10hbkDHUgODVUC6kDK5AcmpwC4Az9Suo/oU4AR1J1HdCuoCupXUf1J1AT1J1HdSdAE9QlI3qX1AUpDUjFAagBcwMmQ5gZMADMjJkKZGTAAzI2ZCmQ5kClIxSWpGKQBSJoYpI50AikZ8nuarRnygFiNUIyYTXjAakX1LlB6AS0BUmhyBSAzVIpyaqkVUgZ3IqpNNSBUgZakByaXIDkDO5AcGnqD1AzuQeho6lOQM/QnQf1+xOgGfoToP6E6AJ6E6D+pOv2ASpCUjVJakBSkNSMUhKQFqRkyEpDmQBUjFISkYpAqZGTBcyNmQBUjFJakNIAOpTQ3QugM9mXKashkyvyBMLNmJnPws24mBrkYhUMbIBaAchojATUi3JoaFtAZqkByaHIDkDO5Bcj3IDkBDkFyPaKcgIcldB3UnUBHQrqO6k6gJ6k6jupOoCepfQb1J1AX1LUjOhakBakJQGpDSAWpDUhKQ5kCpkNSWpGKQKmRikuZDSApSFosgAsXQxsTkYGfKY8z8mnKzHmpbAXhZtxM52KjZioDoQx8vwZMdGiKAeiwJYaApoFoMpoBTQDka0C0AlyC5HOQWgEOSug5yV1AS5KcjupTkBPUnUb1J1AV1J1G9SdQFdSdRvUnUBfUikb1J1AWpCSGdAlIC1IcyEpCUgUkGkWkFoCJBIiIBZTIwKYA0xGRjKozZKAVlZh5FeGactGHNXkAMVGzFRz8bNeKgOjio0wzBjo046A2SxiZmih0sBiIUggKK0ERgLaKcjNFNAKcg6HaKaAV1JoZomgE9SdRvUnUBXUnUb1J1AV1LUjOpOoAaJoPRegA6l9Q9F6ABIJItIJAUkWQgEIQpsCmxdMumKugAujNloZkoy5KATmox5WPy1sy5GAGNmnHRjkfFAdDHXsaYowY7NOOgN0UOmjHFD4oDVNBpmeWNTAaQBMJMCyEIBRWgiADr7Fa+wZAA0QMmgAKGaJoBen8Fhk0ABEHomgB19iIIgFFkIBRNk2C2BGwKojYuqAlUIugroz5KAHJRmyUHkoy5KAXkoy2xuRmemBJY6GITGSwNUUacdGKKHxQG6KHxRiih8UBsih00Y4odNAaUwkxE0MVANTC2KVBqgCIVsmwLLK2RMCFlbL2BCiygLKLKAhCbJsCEJspsC9gtg7KdAW2C6BdAVQF1Qq6KqhN0BLoRkou6M+SwByUZ7Yd0ItgBbE0w6YqmBEMQpDJYDoY6GZpGywNUUPijHFDooDZFDZoyRQ2aA1zQyaMk0NmgNKoNMzqg1QD9lpiUwlQDdlpi1RaoAy9i9k2AzsU2BsmwD2TYHYnYA2ytgugXQDGwWwdgNgE2C6BdC6oA6oXVAOgKoC6oTdEqhN0BLoRdF3Qm2ANsVTCpiqYA0xTYdMTTAMOWAWmA5MYmIlhpgPljZozpjJYGmaGzRkljZoDXNjJoyTQxUBqmhioyzYaoDSqDVGZUEqA0qi1RnVlqwH7L7CO5fYByZOwnsTsA7ZNiexXcBzoHsKdA9wHOwHQt0A6AY6AqgHQurAOqF1QLoXVAFVCboqqFtgSmKplti2wKpgUyUwKYAWxTDpgeAHMENooCJ6GyKGT7AMQaYpBywGpjExGw0wHzQasQmEmBoVBqzOmGqA0Kg1RmVBKgNKonYR2LVAPVF9hHYvsA/sV2FdidgG9iuwrsTsA10C6FugXQDXQDoW6BdAHVAOgGwXQBOgKZTYDYEpgNkbAbAjYtsumCwApgl0AAu/dgh17ggaGCyEAgc+xCAEgpIQA0GiEAtBJkIAaCTIQAkEmQgBbL2QgE2XtkIBabJtkIBCmyEApspshABbBbIQAWCQgAsCiEAD6lMhABYDIQAKAIQAaKIQD//2Q==") center/cover fixed no-repeat;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  backdrop-filter:blur(2px);
+  background:rgba(0,0,0,.18);
+  z-index:-1;
+}
+#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.0;animation:fall linear infinite}
+@keyframes fall{
+  0%{transform:translate3d(0,-20px,0);opacity:0}
+  12%{opacity:.9}
+  80%{opacity:.5}
+  100%{transform:translate3d(var(--drift),110vh,0);opacity:0}
+}
+.app{position:relative;z-index:1;min-height:100vh;padding:28px 18px 50px}
+.nav{
+  width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;border:1px solid var(--line);border-radius:22px;
+  background:rgba(10,10,10,.42);backdrop-filter:blur(24px);box-shadow:0 18px 60px rgba(0,0,0,.3)
+}
+.logo{font-weight:800;letter-spacing:.08em;font-size:13px}
+.logo span{color:#aaa;font-weight:500}
+.nav small{color:#999}
+.page{display:none;width:min(1180px,100%);margin:28px auto 0;animation:show .35s ease}
+.page.active{display:block}
+@keyframes show{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.glass{
+  background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.035));
+  border:1px solid var(--line);backdrop-filter:blur(26px) saturate(130%);
+  -webkit-backdrop-filter:blur(26px) saturate(130%);
+  box-shadow:0 30px 100px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.hero{min-height:calc(100vh - 150px);display:grid;place-items:center;text-align:center;border-radius:36px;padding:60px 20px}
+.badge{display:inline-flex;padding:8px 13px;border-radius:999px;border:1px solid var(--line);color:#c8c8c8;font-size:12px;background:rgba(0,0,0,.25)}
+h1{font-size:clamp(42px,8vw,86px);line-height:.95;letter-spacing:-.06em;margin:18px 0 16px}
+.hero p{max-width:680px;margin:auto;color:#bdbdbd;line-height:1.7}
+.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:30px 0}
+.btn{
+  border:1px solid var(--line);color:white;background:rgba(255,255,255,.08);
+  padding:14px 20px;border-radius:15px;cursor:pointer;font-weight:700;transition:.2s
+}
+.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.15)}
+.btn.primary{background:#fff;color:#000;border-color:#fff}
+.btn.back{background:transparent}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}
+.section-head h2{font-size:32px;letter-spacing:-.04em}
+.section-head p{color:#999;font-size:14px}
+.layout{display:grid;grid-template-columns:1fr 360px;gap:18px}
+.card{border-radius:28px;padding:22px}
+.input{display:flex;gap:10px;margin:18px 0}
+input,select{
+  width:100%;border:1px solid var(--line);outline:none;color:white;background:rgba(0,0,0,.34);
+  padding:15px 16px;border-radius:15px
+}
+input::placeholder{color:#777}
+.platforms,.formats{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0 20px}
+.chip{padding:10px 13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:#bbb;cursor:pointer}
+.chip.active{background:#fff;color:#000;border-color:#fff}
+.phone-wrap{display:grid;place-items:center;min-height:600px}
+.phone{
+  width:min(285px,85vw);height:560px;border:8px solid #151515;border-radius:42px;background:#090909;
+  box-shadow:0 25px 70px rgba(0,0,0,.7),inset 0 0 0 1px #444;overflow:hidden;position:relative
+}
+.phone:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:92px;height:22px;border-radius:20px;background:#000;z-index:3}
+.preview{
+  height:100%;display:grid;place-items:center;text-align:center;padding:30px;
+  background:radial-gradient(circle at 50% 30%,#333,transparent 42%),#070707
+}
+.preview-icon{font-size:48px;margin-bottom:14px}
+.preview p{color:#999;font-size:13px;line-height:1.6}
+.notice{margin-top:15px;padding:13px 14px;border-radius:14px;background:rgba(255,190,90,.07);border:1px solid rgba(255,190,90,.2);color:#c7b79b;font-size:12px;line-height:1.6}
+.downloads{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.download-item{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:rgba(0,0,0,.22)}
+.download-item span{color:#aaa;font-size:13px}
+.music-player{border-radius:30px;padding:28px;margin-top:18px}
+.now{display:flex;align-items:center;gap:16px}
+.cover{width:76px;height:76px;border-radius:20px;background:linear-gradient(145deg,#333,#090909);display:grid;place-items:center;font-size:28px;border:1px solid var(--line)}
+.track-title{font-size:20px;font-weight:800}
+.track-sub{font-size:13px;color:#888;margin-top:5px}
+.player-controls{display:flex;align-items:center;gap:12px;margin-top:22px}
+.range{width:100%}
+.library{margin-top:18px;display:grid;gap:10px}
+.track{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(0,0,0,.2)}
+.track small{color:#888}
+.footer{width:min(1180px,100%);margin:22px auto 0;text-align:center;color:#777;font-size:12px}
+.hidden{display:none!important}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.phone-wrap{min-height:auto;padding:8px 0 18px}}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<main class="app">
+  <nav class="nav">
+    <div class="logo">X STUDIO <span>CREATIVE CREATOR</span></div>
+    <small>HNN AI GENERATOR</small>
+  </nav>
+
+  <!-- HALAMAN 1 -->
+  <section id="home" class="page active">
+    <div class="hero glass">
+      <div>
+        <div class="badge">✦ HNN AI GENERATOR · X STUDIO</div>
+        <h1>CREATE.<br>PLAY.<br>DOWNLOAD.</h1>
+        <p>
+          Workspace modern untuk mengatur media kamu. Pilih <b>Download Area</b>
+          untuk mengelola media milikmu atau <b>Music Area</b> untuk membuat playlist
+          dan memutar audio di background.
+        </p>
+        <div class="actions">
+          <button class="btn primary" onclick="go('download')">↓ Download Area</button>
+          <button class="btn" onclick="go('music')">♫ Music Area</button>
+        </div>
+        <p style="font-size:12px;color:#777">Gunakan hanya konten yang kamu miliki atau punya izin untuk mengunduh/mengolah.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 2 -->
+  <section id="download" class="page">
+    <div class="section-head">
+      <div>
+        <h2>Download Area</h2>
+        <p>Tempel link media, pilih platform dan format.</p>
+      </div>
+      <button class="btn back" onclick="go('home')">← Home</button>
+    </div>
+
+    <div class="layout">
+      <div class="glass card">
+        <label style="font-size:13px;color:#aaa">LINK MEDIA</label>
+        <div class="input">
+          <input id="mediaUrl" type="url" placeholder="Tempel link YouTube / TikTok / Instagram / Pinterest...">
+          <button class="btn primary" onclick="previewMedia()">Preview</button>
+        </div>
+
+        <label style="font-size:13px;color:#aaa">PLATFORM</label>
+        <div class="platforms" id="platforms">
+          <button class="chip active" data-platform="YouTube">YouTube</button>
+          <button class="chip" data-platform="TikTok">TikTok</button>
+          <button class="chip" data-platform="Instagram">Instagram</button>
+          <button class="chip" data-platform="Pinterest">Pinterest</button>
+        </div>
+
+        <label style="font-size:13px;color:#aaa">FORMAT</label>
+        <div class="formats" id="formats">
+          <button class="chip active" data-format="MP4">MP4 Video</button>
+          <button class="chip" data-format="MP3">MP3 Audio</button>
+          <button class="chip" data-format="JPG">Foto JPG</button>
+        </div>
+
+        <button class="btn primary" style="width:100%" onclick="requestDownload()">↓ Siapkan Download</button>
+
+        <div class="notice">
+          Versi HTML ini adalah frontend/demo. Browser tidak bisa mengambil dan mengonversi
+          video dari YouTube, TikTok, Instagram, atau Pinterest secara langsung. Untuk
+          download/convert sungguhan, sambungkan tombol ini ke backend/API yang legal dan
+          mematuhi kebijakan platform.
+        </div>
+
+        <div class="downloads" id="downloadList">
+          <div class="download-item"><span>Belum ada file.</span><span>—</span></div>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="preview" id="preview">
+            <div>
+              <div class="preview-icon">◉</div>
+              <strong>Media Preview</strong>
+              <p>Tempel link lalu tekan Preview untuk menampilkan status media.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAMAN 3 -->
+  <section id="music" class="page">
+    <div class="section-head">
+      <div>
+        <h2>Music Area</h2>
+        <p>Tambahkan audio yang kamu punya dan putar di background.</p>
+      </div>
+      <button class="btn back" onclick="go('home')">← Home</button>
+    </div>
+
+    <div class="glass card">
+      <label style="font-size:13px;color:#aaa">LINK AUDIO</label>
+      <div class="input">
+        <input id="musicUrl" type="url" placeholder="Masukkan direct link file audio .mp3 / .wav / .ogg">
+        <button class="btn primary" onclick="addMusic()">+ Add Music</button>
+      </div>
+
+      <div class="notice">
+        Untuk keamanan dan kompatibilitas browser, pemutar ini menerima direct URL ke file
+        audio yang memang bisa diakses oleh browser. Link halaman YouTube/TikTok bukan direct
+        audio URL dan tidak dapat otomatis diubah menjadi MP3 hanya dengan HTML.
+      </div>
+
+      <div class="music-player glass">
+        <div class="now">
+          <div class="cover">♫</div>
+          <div>
+            <div class="track-title" id="nowTitle">No track selected</div>
+            <div class="track-sub" id="nowSub">X Studio Music Player</div>
+          </div>
+        </div>
+        <audio id="audio" preload="metadata"></audio>
+        <div class="player-controls">
+          <button class="btn" onclick="togglePlay()" id="playBtn">▶ Play</button>
+          <input class="range" id="volume" type="range" min="0" max="1" step=".01" value=".8">
+        </div>
+      </div>
+
+      <div class="library" id="library"></div>
+    </div>
+  </section>
+
+  <div class="footer">X Studio Creative Creator · HNN AI Generator · Single HTML UI</div>
+</main>
+
+<script>
+// ---------- Navigasi ----------
+function go(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(page).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ---------- Bintang jatuh ----------
+const stars = document.getElementById('stars');
+for (let i=0;i<55;i++) {
+  const s=document.createElement('span');
+  s.className='star';
+  s.style.left=Math.random()*100+'%';
+  s.style.top=(-Math.random()*100)+'px';
+  s.style.animationDuration=(2.5+Math.random()*5)+'s';
+  s.style.animationDelay=(Math.random()*6)+'s';
+  s.style.setProperty('--drift',(Math.random()*120-60)+'px');
+  s.style.transform='scale('+(0.5+Math.random()*1.7)+')';
+  stars.appendChild(s);
+}
+
+// ---------- Chips ----------
+let selectedPlatform='YouTube';
+let selectedFormat='MP4';
+
+document.querySelectorAll('#platforms .chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#platforms .chip').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    selectedPlatform=btn.dataset.platform;
+  });
+});
+document.querySelectorAll('#formats .chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#formats .chip').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    selectedFormat=btn.dataset.format;
+  });
+});
+
+// ---------- Download preview ----------
+function previewMedia() {
+  const url=document.getElementById('mediaUrl').value.trim();
+  const preview=document.getElementById('preview');
+
+  if(!url) {
+    preview.innerHTML='<div><div class="preview-icon">!</div><strong>Link belum diisi</strong><p>Masukkan URL media terlebih dahulu.</p></div>';
+    return;
+  }
+
+  preview.innerHTML=`
+    <div>
+      <div class="preview-icon">✓</div>
+      <strong>${escapeHtml(selectedPlatform)} media detected</strong>
+      <p style="margin-top:8px;word-break:break-all">${escapeHtml(url)}</p>
+      <p style="margin-top:10px;color:#bbb">Format: ${escapeHtml(selectedFormat)}</p>
+    </div>`;
+}
+
+function requestDownload() {
+  const url=document.getElementById('mediaUrl').value.trim();
+  const list=document.getElementById('downloadList');
+
+  if(!url) {
+    alert('Masukkan link media terlebih dahulu.');
+    return;
+  }
+
+  const item=document.createElement('div');
+  item.className='download-item';
+  item.innerHTML=`
+    <span>${escapeHtml(selectedPlatform)} · ${escapeHtml(selectedFormat)}</span>
+    <button class="btn" onclick="this.textContent='Backend diperlukan'">Download</button>`;
+  list.prepend(item);
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+
+// ---------- Music player ----------
+const audio=document.getElementById('audio');
+const volume=document.getElementById('volume');
+const playBtn=document.getElementById('playBtn');
+
+volume.addEventListener('input',()=>audio.volume=volume.value);
+audio.volume=.8;
+
+audio.addEventListener('play',()=>playBtn.textContent='❚❚ Pause');
+audio.addEventListener('pause',()=>playBtn.textContent='▶ Play');
+
+function addMusic() {
+  const url=document.getElementById('musicUrl').value.trim();
+  if(!url) {
+    alert('Masukkan direct URL audio terlebih dahulu.');
+    return;
+  }
+
+  // Hanya mencoba URL yang diberikan sebagai sumber audio.
+  // Server harus mengizinkan CORS agar browser dapat memutarnya.
+  audio.src=url;
+  document.getElementById('nowTitle').textContent='Custom Audio';
+  document.getElementById('nowSub').textContent=url;
+
+  const row=document.createElement('div');
+  row.className='track';
+  row.innerHTML=`
+    <div>
+      <strong>Custom Audio</strong><br>
+      <small>${escapeHtml(url)}</small>
+    </div>
+    <button class="btn" onclick="playTrack('${encodeURIComponent(url)}')">Play</button>`;
+  document.getElementById('library').prepend(row);
+  audio.play().catch(()=>{});
+}
+
+function playTrack(encoded) {
+  const url=decodeURIComponent(encoded);
+  audio.src=url;
+  audio.play().catch(()=>alert('Browser menolak autoplay. Tekan Play secara manual.'));
+  document.getElementById('nowTitle').textContent='Custom Audio';
+  document.getElementById('nowSub').textContent=url;
+}
+
+function togglePlay() {
+  if(!audio.src) {
+    alert('Tambahkan audio terlebih dahulu.');
+    return;
+  }
+  if(audio.paused) audio.play().catch(()=>alert('Tekan Play lagi untuk iniciar pemutaran.'));
+  else audio.pause();
+}
+</script>
+</body>
+</html>
